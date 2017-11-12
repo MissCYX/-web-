@@ -14,7 +14,10 @@ $(function(){
                 pageSize: 5
             },
             success:function(data){
-                console.log(data);
+                // console.log(data);
+                var UserManageList = template('usermanage-template',data);
+                // 把拿到的数据添加到页面中
+                $('table tbody').html(UserManageList);
             }
         })
     }

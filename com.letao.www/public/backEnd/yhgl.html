@@ -141,15 +141,40 @@
 
 
 
+    <!-- 模板引擎
+    用法
+    1：声明模板： 原生   简洁
+    2：绑定数据  template（模板的id，数据对象）
+     -->
 
+    <script type="text/template" id="usermanage-template">
+     <!-- <%for(var i = 0; i < rows.length; i++){%> -->
+        <%for(var i = 0; i<rows.length;i++){%>
+        <tr class="text-center">
+                <td><%=(page-1)*size+i+1%></td>
+                <td><%=rows[i].username%></td>
+                <td><%=rows[i].mobile%></td>
+                <td><%=rows[i].isDelete == 1? '禁用':'正常'%></td>
+                <td>
+                        <%if(rows[i].isDelete == 1){%>
+                        <a href="javascript:;" class="btn btn-primary">启用</a>
+                        <%}else {%>
+                        <a href="javascript:;" class="btn btn-primary">禁用</a>
+                        <% }%>
+                    
+                </td>
+            </tr>
+      }
+        
+    </script>
 
 
     <!-- 引入jquery -->
     <script src="./lib/jquery/jquery.min.js"></script>
     <!-- 引入bootstrap的插件 -->
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-    <!-- 引入echarts库 -->
-    <script src="./lib/echarts/echarts.min.js"></script>
+    <!-- 引入模板引擎的插件 -->
+    <script src="./lib/artTemplate/template-native.js"></script>
     <!-- 引入表单验证的插件 -->
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <!-- 引入进度条插件 -->
@@ -157,7 +182,6 @@
     <!-- 引入admin文件 -->
     <script src="./js/admin.js"></script>
     <!-- 引入index.js -->
-    <script src="./js/index.js"></script>
     <script src="./js/yhgl.js"></script>
 </body>
 

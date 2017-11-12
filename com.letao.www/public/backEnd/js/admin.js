@@ -2,13 +2,15 @@
 
 
 // 进度条
-NProgress.configure({ showSpinner: false});
+NProgress.configure({
+    showSpinner: false
+});
 
-$(window).ajaxStart(function(){
+$(window).ajaxStart(function () {
     NProgress.start();
 })
 
-$(window).ajaxComplete(function(){
+$(window).ajaxComplete(function () {
     NProgress.done();
 })
 
@@ -20,14 +22,14 @@ $(window).ajaxComplete(function(){
 // console.log(cc);
 
 
-$('.navCaidan').on('click',function(){
+$('.navCaidan').on('click', function () {
     // toggle()切换
     $('.ad_aside').toggle();
 })
 
 
 // 点击分类管理，滑出菜单
-$('.ad_aside .menu .fenlei').on('click',function(){
+$('.ad_aside .menu .fenlei').on('click', function () {
     // var _this = $(this);
     // var child =  _this.children();
     $('.fenlei .child').slideToggle();
@@ -35,20 +37,24 @@ $('.ad_aside .menu .fenlei').on('click',function(){
 })
 
 // 按下确定按钮，发送ajax请求，跳转
-$('.modal-footer .btn-primary').on('click',function(){
+$('.modal-footer .btn-primary').on('click', function () {
     console.log('1');
     $.ajax({
-        type:'get',
-        url:'/employee/employeeLogout',
-        data:{},
-        dataType:'json',
-        success:function(data){
-            setTimeout(function(){
-                if(data.success){
-                    // 隐藏模态框
-                    location.herf = 'login.html'
-                }
-            },500);
+        type: 'get',
+        url: '/employee/employeeLogout',
+        data: {},
+        dataType: 'json',
+        success: function (data) {
+
+            if (data.success == true) {
+                // 隐藏模态框
+                $('#myModal').modal('hide');
+            //    跳转
+
+                location.href = '../login.html';
+
+                
+            }
         }
     })
 })
